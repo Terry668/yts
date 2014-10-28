@@ -1,6 +1,6 @@
 /*
  *
- * js系统扩展库，扩展javascript各原生属性，实现扩展功能
+ * Javascript系统扩展库，扩展javascript各原生属性，实现扩展功能
  * Teryy 2014-10-28
  * github：https://github.com/terry668/jl
  *
@@ -43,7 +43,7 @@ Date.prototype.Format = function (fmt) { //author: meizz
         if (new RegExp("(" + k + ")").test(fmt))
             fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
     return fmt;
-}
+};
 
 
 /*
@@ -59,7 +59,7 @@ String.prototype.endWith = function (s) {
     else
         return false;
     return true;
-}
+};
 
 // String字符串startWith方法
 String.prototype.startWith = function (s) {
@@ -70,4 +70,4 @@ String.prototype.startWith = function (s) {
     else
         return false;
     return true;
-}
+};
