@@ -1,6 +1,8 @@
 yunblogs terry scripts
 ==
 
-包含javascript各种常规操作js库，每个js模块可独立引用；
+包含javascript各种常规操作js库，每个js模块可独立引用
 
-如果有依赖的在模块里说明，如果有依赖一般来说都是依赖jQuery1.8.2及以上的jQuery版本库
+一个js文件算一个功能模块，基本上功能模块都没有依赖，如果模块有依赖文件，则会在文件里或注释里说明
+
+通常情况下，依赖文件都会是jquery
