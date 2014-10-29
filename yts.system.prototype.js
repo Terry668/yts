@@ -2,7 +2,7 @@
  *
  * Javascript系统扩展库，扩展javascript各原生属性，实现扩展功能
  * Teryy 2014-10-28
- * github：https://github.com/terry668/jl
+ * github：https://github.com/terry668/yts
  *
  * */
 
@@ -15,7 +15,31 @@
 navigator.isIE = navigator.userAgent.indexOf("MSIE") > -1;
 navigator.isIE6 = window.attachEvent && !window.XMLHttpRequest && navigator.userAgent.indexOf("MSIE 6.0") > -1;
 navigator.isIE7 = window.attachEvent && navigator.userAgent.indexOf("MSIE 7.0") > -1;
-
+navigator.isFlash = (function () {
+    var f = false;
+    var n = navigator;
+    if (n.plugins && n.plugins.length) {
+        for (var i = 0; i < n.plugins.length; i++) {
+            if (n.plugins[i].name.indexOf("Shockwave Flash") != -1) {
+                f = n.plugins[i].description.split("Shockwave Flash ")[1].split(' ')[0];
+                break;
+            }
+        }
+    } else if (window.ActiveXObject) {
+        for (var i = 12; i >= 2; i--) {
+            try {
+                var fl = eval("new ActiveXObject('ShockwaveFlash.ShockwaveFlash." + i + "');");
+                if (fl) {
+                    f = i + '.0';
+                    break;
+                }
+            }
+            catch (e) {
+            }
+        }
+    }
+    return f;
+})();
 
 /*
  * Date属性扩展，将Date转换为指定格式的String
@@ -47,10 +71,10 @@ Date.prototype.Format = function (fmt) { //author: meizz
 
 
 /*
-* 实现String字符串endWith方法，参考C#里的endWith方法，判断字符串是否以某个字符串结尾
-* ======================================================
-* Terry 2014-10-28
-* */
+ * 实现String字符串endWith方法，参考C#里的endWith方法，判断字符串是否以某个字符串结尾
+ * ======================================================
+ * Terry 2014-10-28
+ * */
 String.prototype.endWith = function (s) {
     if (s == null || s == "" || this.length == 0 || s.length > this.length)
         return false;
@@ -61,7 +85,11 @@ String.prototype.endWith = function (s) {
     return true;
 };
 
-// String字符串startWith方法
+/*
+ * String字符串startWith方法，参考c#的startWith方法，判断字符串是否以某个字符串开始
+ * ====================================================
+ * Terry 2014-10-28
+ * */
 String.prototype.startWith = function (s) {
     if (s == null || s == "" || this.length == 0 || s.length > this.length)
         return false;
